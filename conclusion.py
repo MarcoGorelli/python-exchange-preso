@@ -15,11 +15,13 @@ def _(mo):
         It's used by Altair, Plotly, Marimo, HierarchicalForecast, Shiny, Bokeh, and many more.
 
         To use it:
+
         1. `narwhals.from_native` on the user's input.
         2. Use the Narwhals API.
         3. Return the object to the user with `.to_native()`.
 
         Next steps:
+
         - Stabilise API into `narwhals.stable.v2`
         - Improve support for lazy-only backends (DuckDB, PySpark, SQLFrame, Ibis)
         - Narwhalify more libraries!

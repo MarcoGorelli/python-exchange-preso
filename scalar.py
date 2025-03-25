@@ -26,23 +26,6 @@ def _():
 
 
 @app.cell
-def _(mo):
-    mo.md(
-        r"""
-        ## Task
-
-        Write a function which, given a dataframe:
-        - Only keeps rows where we have broccoli or bananas.
-        - Strips currency from `'farmprice'` and converts to `Float64`
-        - Scale the farm price (subtract mean, divide by standard deviation)
-        - Only keep 'productname', 'farmprice', 'date' columns
-        - Sort by date and productname
-        """
-    )
-    return
-
-
-@app.cell
 def _(duckdb, pd, pl):
     file = "../scratch/vegetables.csv"
 
@@ -53,6 +36,32 @@ def _(duckdb, pd, pl):
     # Dominique
     df_duckdb = duckdb.read_csv(file)
     return df_duckdb, df_pd, df_pl, file
+
+
+@app.cell
+def _(df_duckdb):
+    df_duckdb
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(
+        r"""
+        ## Task
+
+        Write a function which, given a dataframe:
+
+        - Only keeps rows where we have Tomatoes, Carrots, or Potatoes
+        - Strips currency from `'farmprice'` and converts to `Float64`
+        - Scale the farm price (subtract mean, divide by standard deviation)
+        - Only keep 'productname', 'farmprice', 'date' columns
+        - Sort by date and productname
+
+        This function should for `df_pd`, `df_pl`, and `df_duckdb`.
+        """
+    )
+    return
 
 
 @app.cell
@@ -133,6 +142,11 @@ def _():
     # 1. `from_native` on the user's input
     # 2. use the Narwhals API
     # 3. call `to_native`
+    return
+
+
+@app.cell
+def _():
     return
 
 

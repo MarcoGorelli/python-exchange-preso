@@ -13,10 +13,12 @@ def _(mo):
         Narwhals takes backwards-compatibility very seriously.
 
         We currently expose two namespaces:
+
         - `import narwhals as nw`. Maybe subject to changes / deprecation cycles.
         - `import narwhals.stable.v1 as nw`. Not expected to ever change (so long as that's possible).
 
         Suggestion:
+
         - prototype / explore using `import narwhals as nw`. When you're happy, trying switching over to `import narwhals.stable.v1 as nw`, and if it still works, deploy your tool with confidence that new Narwhals releases won't break it! 🚀
         """
     )

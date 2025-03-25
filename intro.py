@@ -16,6 +16,10 @@ def _(mo):
         r"""
         # Narwhals
 
+        Narwhals is a lightweight compatibility layer between dataframes.
+
+        It's used by Altair, Plotly, Marimo, HierarchicalForecast, Shiny, Bokeh, and many more.
+
         - Motivational example
         - Narwhals crash course
         - Lazy execution and order-dependence
@@ -33,13 +37,13 @@ def _():
 
 
 @app.cell
-def _(px):
-    import pandas as pd
+def _():
+    # import pandas as pd
 
-    assets_pd = pd.read_csv("../scratch/assets.csv")
-    assets_pd = assets_pd[assets_pd["symbol"].isin(["ABBV", "XOM"])]
-    px.line(assets_pd, x="date", y="price", color="symbol")
-    return assets_pd, pd
+    # assets_pd = pd.read_csv("../scratch/assets.csv")
+    # assets_pd = assets_pd[assets_pd["symbol"].isin(["ABBV", "XOM"])]
+    # px.line(assets_pd, x="date", y="price", color="symbol")
+    return
 
 
 @app.cell
@@ -51,13 +55,13 @@ def _():
 
 
 @app.cell
-def _():
-    # import polars as pl
+def _(px):
+    import polars as pl
 
-    # assets_pl = pl.read_csv('../scratch/assets.csv', try_parse_dates=True)
-    # assets_pl = assets_pl.filter(pl.col('symbol').is_in(['ABBV', 'XOM']))
-    # px.line(assets_pl, x='date', y='price', color='symbol')
-    return
+    assets_pl = pl.read_csv("../scratch/assets.csv", try_parse_dates=True)
+    assets_pl = assets_pl.filter(pl.col("symbol").is_in(["ABBV", "XOM"]))
+    px.line(assets_pl, x="date", y="price", color="symbol")
+    return assets_pl, pl
 
 
 @app.cell
@@ -69,9 +73,9 @@ def _(mo):
 
         Narwhals in a nutshell:
 
-        1. Call narwhals.omnativenarwhals.from_native on the user's input.
+        1. Call `narwhals.from_native` on the user's input.
         2. Express your logic using the Narwhals API.
-        3. Return the object to the user using →nativeto_native.
+        3. Return the object to the user using `.to_native`.
         """
     )
     return
