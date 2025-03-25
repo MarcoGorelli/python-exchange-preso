@@ -31,7 +31,7 @@ def _():
 
 @app.cell
 def _():
-    import narwhals.stable.v1 as nw
+    import narwhals as nw
 
 
     def agnostic_clean_dataset(df_native):

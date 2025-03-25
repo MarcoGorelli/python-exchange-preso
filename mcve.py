@@ -9,25 +9,16 @@ def _():
     from datetime import date
     import polars as pl
 
-    df = pl.read_csv('https://raw.githubusercontent.com/Mcompetitions/M6-methods/refs/heads/main/assets_m6.csv', try_parse_dates=True)
+    df = pl.read_csv(
+        "https://raw.githubusercontent.com/Mcompetitions/M6-methods/refs/heads/main/assets_m6.csv",
+        try_parse_dates=True,
+    )
     return date, df, pl
 
 
 @app.cell
 def _(df):
     df
-    return
-
-
-@app.cell
-def _(pandas, polars):
-    # I will now press:
-    # ^ c e polars ESC j ^ . j ^ .
-    polars
-    polars
-
-    pandas
-    pandas
     return
 
 

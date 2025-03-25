@@ -136,50 +136,5 @@ def _():
     return
 
 
-@app.cell
-def _(nw):
-    def agnostic_clean_dataset(df_native):
-        # step 1
-        df = nw.from_native(df_native)
-
-        # step 2
-        result = (
-            df.filter(
-                nw.col("productname").is_in(["Tomatoes", "Carrots", "Potatoes"])
-            )
-            .with_columns(
-                nw.col("farmprice").str.strip_chars("$").cast(nw.Float64)
-            )
-            .with_columns(
-                (nw.col("farmprice") - nw.col("farmprice").mean())
-                / nw.col("farmprice").std()
-            )
-            .select("date", "productname", "farmprice")
-            .sort("date", "productname")
-        )
-
-        # step 3
-        return result.to_native()
-    return (agnostic_clean_dataset,)
-
-
-@app.cell
-def _(agnostic_clean_dataset, df_pd):
-    agnostic_clean_dataset(df_pd)
-    return
-
-
-@app.cell
-def _(agnostic_clean_dataset, df_pl):
-    agnostic_clean_dataset(df_pl)
-    return
-
-
-@app.cell
-def _(agnostic_clean_dataset, df_duckdb):
-    agnostic_clean_dataset(df_duckdb)
-    return
-
-
 if __name__ == "__main__":
     app.run()

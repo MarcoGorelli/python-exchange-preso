@@ -53,50 +53,26 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Indexing""")
-    return
+    mo.md(
+        r"""
+        ## Indexing
 
-
-@app.cell
-def _(df):
-    df
-    return
-
-
-@app.cell
-def _(df):
-    df[[0, 2]]
-    return
-
-
-@app.cell
-def _(lf):
-    lf
-    return
-
-
-@app.cell
-def _(datetime, lf, nw):
-    lf.filter(nw.col("date").is_in([datetime(2025, 3, 25), datetime(2025, 3, 27)]))
+        - For DataFrame, you can go wild and use NumPy-style indexing.
+        - For LazyFrame, you can only use expressions.
+        """
+    )
     return
 
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Window functions""")
-    return
+    mo.md(
+        r"""
+        ## Window functions
 
-
-@app.cell
-def _(df, nw):
-    df.with_columns(price_cum_sum=nw.col("price").cum_sum().over("store"))
-    return
-
-
-@app.cell
-def _(lf, nw):
-    lf.with_columns(
-        price_cum_sum=nw.col("price").cum_sum().over("store", order_by="date")
+        - For DataFrame, order-dependent functions like `cum_sum` happen in order of appearance.
+        - For LazyFrame, you need to specify which column(s) to order by.
+        """
     )
     return
 
